@@ -13,15 +13,25 @@ class User:
     """사용자 정보"""
     id: str
     email: str
+    name: Optional[str] = None
+    avatar_url: Optional[str] = None
+    provider: Optional[str] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
     @classmethod
     def from_supabase(cls, user_data: dict) -> "User":
         """Supabase 응답에서 User 생성"""
+        # user_metadata에서 OAuth 정보 추출
+        metadata = user_data.get("user_metadata", {})
+        app_metadata = user_data.get("app_metadata", {})
+
         return cls(
             id=user_data.get("id", ""),
             email=user_data.get("email", ""),
+            name=metadata.get("full_name") or metadata.get("name"),
+            avatar_url=metadata.get("avatar_url") or metadata.get("picture"),
+            provider=app_metadata.get("provider"),
             created_at=user_data.get("created_at"),
             updated_at=user_data.get("updated_at"),
         )

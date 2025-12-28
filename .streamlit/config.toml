@@ -1,0 +1,10 @@
+[theme]
+# Light theme 강제
+base = "light"
+primaryColor = "#c9a87c"
+backgroundColor = "#f7f4f0"
+secondaryBackgroundColor = "#fffdfb"
+textColor = "#2d251f"
+
+[server]
+headless = true
