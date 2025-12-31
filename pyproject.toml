@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "studio-core"
-version = "0.1.0"
+version = "0.1.1"
 description = "공통 비즈니스 로직 라이브러리 - 인증, 유틸리티, Supabase 연동"
 readme = "README.md"
 license = {text = "MIT"}
